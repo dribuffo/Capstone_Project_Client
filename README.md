@@ -105,16 +105,14 @@ The back end database will be (placeholder) based and will have a main "player" 
 ---
 
 ## LIBRARIES & ADDITIONAL DEPENDENCIES
-
 ---
-
-Front End:
 
  [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction)
 
 ## CREDITED CODE BLOCKS
-
 ---
+  [User/Auth](https://www.youtube.com/watch?v=HGgyd1bYWsE)
+  Used the above Youtube video to help implement a signup and log in page for my project.
 
 ## SURMOUNTABLES
 
