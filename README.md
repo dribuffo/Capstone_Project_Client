@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# PROJECT 4 OVERVIEW
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+This full stack application will make use of a heroku hosted database to display my guild's collection of collectables by person.
 
-In the project directory, you can run:
+## USER STORIES
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+As someone who is used to hosting in-game events to hunt for collectables and nik-nacks it would be nice to have a searchable database to store this information, rather than having to defer to a multipaged spreadsheet.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## PROJECT DESCRIPTION
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This full stack application will have a REACT front end, utilizing bootstrap to display information from a database that is filterable by expansion pack (and thus specific set of collectables) and with the ability to display a character's collection in it's entirety.
 
-### `npm run build`
+The back end database will be (placeholder) based and will have a main "player" that will reference each set of collectables and store what each player has.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## PROJECT SCHEDULE
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Day |                      Deliverable                       |   Status   |
+| :-: | :----------------------------------------------------: | :--------: |
+|  F  |                   Project Worksheet                    | approved!  |
+|  M  |            Back End: models and start CRUD             | complete |
+|  T  | Back End: Finish CRUD and start Front End Basic Design | incomplete |
+|  W  |          Front End: Basic Design and display           | incomplete |
+|  R  |       Front End: Finish display and start filter       | incomplete |
+|  F  | Front End: Finish filter and start Responsiveness/CSS  | incomplete |
+|  M  |                   Finish and Deploy                    | incomplete |
+|  T  |                   Presentation day!                    | incomplete |
 
-### `npm run eject`
+## WIREFRAMES
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [React Components](https://drive.google.com/file/d/1XpmIEP16nVzZ7K566yMbqMb1atuLpXIy/view?usp=sharing)
+- [Desktop Design](https://drive.google.com/file/d/1mvTj39GTqYUyu8exP9Rb2vUnRAkJ8KA-/view?usp=sharing)
+- [Mobile Design](https://drive.google.com/file/d/1gltoIkwKS2KjEmqE4C6I17FWqHXIONAD/view?usp=sharing)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## FLOWCHARTS
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+#### MVP
+##### Front End
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Create Routes
+- Get dummy data to display for individual
+- Get dummy data to display for group
+- Create Filters
+  - Filter for individual character
+  - Filter for collection set
+- Connect to backend
+- Responsiveness and CSS
+- Deploy
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+|       Component        | Priority | Estimated Time | Actual Time |
+| :--------------------: | :------: | :------------: | :---------: |
+|    Component shell     |    H     |    .5 hour     |      ?      |
+|         Header         |    M     |    .5 hour     |      ?      |
+|         Footer         |    L     |    .5 hour     |      ?      |
+|        Routing         |    H     |    .5 hour     |      ?      |
+|  Dummy Data Creation   |    M     |    2 hours     |      ?      |
+|     Single Display     |    H     |    2 hours     |      ?      |
+|     Group Display      |    H     |    2 hours     |      ?      |
+|     Create Filters     |    H     |    4 hours     |      ?      |
+| Connecting to back end |    H     |    3 hours     |      ?      |
+|       Responsiveness       |    H     |    2 hours     |      ?      |
+|  Display adjustments   |    M     |    3 hours     |      ?      |
+|          CSS           |    M     |    3 hours     |      ?      |
+|         Total          |          |     23 hrs     |      ?      |
 
-### Code Splitting
+#### POST MVP
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+##### Front End
 
-### Analyzing the Bundle Size
+- Adjust filters to include new collectable sets.
+* Connect to character database API
+  - Display character's portrait next to their name
+* Display item icon under each collectable
+* Display item information when you click on specific collectable
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+|                       Component                        | Priority | Estimated Time | Actual Time |
+| :----------------------------------------------------: | :------: | :------------: | :---------: |
+|                     Adjust Filters                     |    H     |     2 hour     |      ?      |
+| Connect to character database API and display portrait |    M     |    1.5 hour    |      ?      |
+|        Display item icon under each collectable        |    L     |    1.5 hrs     |      ?      |
+|                Display item information                |    L     |    2 hours     |      ?      |
+|                         Total                          |          |     7 hrs      |      ?      |
 
-### Making a Progressive Web App
+## WORKING SCREENSHOT
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## TECHNOBABBLE
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## CODE SNIPPET
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## LIBRARIES & ADDITIONAL DEPENDENCIES
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+Front End:
+
+ [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction)
+
+## CREDITED CODE BLOCKS
+
+---
+
+## SURMOUNTABLES
+
+---
