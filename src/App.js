@@ -8,6 +8,7 @@ import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
 
 //components import
 import Home from "./components/Home/Home";
+import Footer from "./components/Footer/Footer"
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/Spells" element={<Spells />} /> */}
       </Routes>
       </main>
+      <Footer />
     </div>
   );
 }
