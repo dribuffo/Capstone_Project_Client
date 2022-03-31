@@ -26,7 +26,7 @@ The back end database will be (placeholder) based and will have a main "player" 
 | :-: | :----------------------------------------------------: | :--------: |
 |  F  |                   Project Worksheet                    | approved!  |
 |  M  |            Back End: models and start CRUD             | complete |
-|  T  | Back End: Finish CRUD and start Front End Basic Design | incomplete |
+|  T  | Back End: Finish CRUD and start Front End Basic Design | complete |
 |  W  |          Front End: Basic Design and display           | incomplete |
 |  R  |       Front End: Finish display and start filter       | incomplete |
 |  F  | Front End: Finish filter and start Responsiveness/CSS  | incomplete |
