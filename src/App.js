@@ -13,6 +13,7 @@ import BLU from "./components/BLU/BLU";
 import Mounts from "./components/Mounts/Mounts";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Singup";
+import Update from './components/Update/Update';
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
     localStorage.removeItem("token");
     window.location.reload();
   }
+
+  const user = localStorage.getItem("token")
   // Put logout button somewhere...
   // <button className="white_btn" onClick={handleLogout}>Logout</button>
 
@@ -34,7 +37,7 @@ function App() {
               <Nav.Link as={Link} to={"/mounts"}>View Mounts</Nav.Link>
               <Nav.Link as={Link} to={"/BLU"}>View BLUs and Spells</Nav.Link>
               <NavDropdown title="Admin" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Update Character</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={"/update"}>Update Character</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item as={Link} to={"/Signup"}>Sign Up</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to={"/Login"}>Log In</NavDropdown.Item>
@@ -50,7 +53,7 @@ function App() {
           <Route path="/" element={<Home />} />,
           <Route path="/mounts" element={<Mounts />} />,
           <Route path="/BLU" element={<BLU />} />,
-          {/*{user && <Route path="/update" element={<Update />} />} */}
+          {user && <Route path="/update" element={<Update />} />}
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
       </Routes>
