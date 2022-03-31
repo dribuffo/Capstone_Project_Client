@@ -11,7 +11,7 @@ const Signup = () => {
   const [error, setError] = useState("");
 
   const handleChange = ({ currentTarget: input }) => {
-    setData({ ...data, [input.email]: input.value });
+    setData({ ...data, [input.name]: input.value });
   };
 
   const handleSubmit = async (event) => {
@@ -63,8 +63,8 @@ const Signup = () => {
           </form>
         </div>
         <div className="right">
-          <h1>New Here?</h1>
-          <Link to="/login">
+          <h1>Create new user?</h1>
+          <Link to="/Signup">
             <button type="button" className="green_btn">
               Sign Up
             </button>

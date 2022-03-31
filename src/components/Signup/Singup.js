@@ -12,7 +12,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
-    setData({ ...data, [input.email]: input.value });
+    setData({ ...data, [input.name]: input.value });
   };
 
   const handleSubmit = async (event) => {
