@@ -109,10 +109,14 @@ The back end database will be (placeholder) based and will have a main "player" 
 
  [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction)
 
-## CREDITED CODE BLOCKS
+## CREDITED CODE BLOCKS & ATTRIBUTES
 ---
   [User/Auth](https://www.youtube.com/watch?v=HGgyd1bYWsE)
   Used the above Youtube video to help implement a signup and log in page for my project.
+  
+<a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Pixel perfect - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created by riajulislam - Flaticon</a>
 
 ## SURMOUNTABLES
 
