@@ -1,11 +1,11 @@
 //dependencies
 import axios from "axios";
-import React, { useEffect } from "react";
-import { useState, useRef } from "react";
+import React from "react";
+import { useState } from "react";
 import apiUrl from "../../apiUrl";
 import "./Mounts.css";
 
-//image imports
+//image imports to use instead of true and false
 import yes from "../images/Check.png"
 import no from "../images/Close.png"
 
@@ -19,12 +19,14 @@ import {
   DropdownButton,
   Dropdown,
   Table,
+  Modal,
 } from "react-bootstrap";
 
 function Mounts() {
+  //useState declarations
   const [allPlayer, setAllPlayer] = useState([]);
   const [singlePlayer, setSinglePlayer] = useState([]);
-  const [display, setDisplay] = useState(null)
+  const [display, setDisplay] = useState(null);
 
   //form input state and handler
   const [formName, setFormName] = useState("");
@@ -49,25 +51,20 @@ function Mounts() {
       .then((data) => setSinglePlayer(data.data.Character))
       .catch((error) => console.log(error))
   }
-  console.log(singlePlayer)
-
-//   useEffect to prevent infinite looping
-//   useEffect(() => {
-//     getPlayer(formName)
-//   },[])
 
   //map through the player list to display character + mounts for all characters
   let allPlayerDisplay;
   if (allPlayer.length > 0) {
-    //   setDisplay(true)
     allPlayerDisplay = allPlayer.map((player, index) => {
       if (player.is_active) {
         const ponyNames = Object.keys(player.pony);
         const ponyValues = Object.values(player.pony);
+        const birdNames = Object.keys(player.bird);
+        const birdValues = Object.values(player.bird);
         return (
-            <div>
+            <div key={index}>
             <h1>{player.name}</h1>
-          <Table responsive key={index}>
+          <Table responsive>
             <thead>
               <tr>
                 <th>Ponies</th>
@@ -77,7 +74,21 @@ function Mounts() {
             <tbody>
               <tr>
                 <td>ARR</td>
-                {ponyValues.map(value => (<td>{(value ? <img className="learned_icon" src={yes} alt="yes"/> : <img className="learned_icon" src={no} alt="no"/> )}</td>))}
+                {ponyValues.map(value => (<td>{(value ? <img className="icon" src={yes} alt="yes"/> : <img className="icon" src={no} alt="no"/> )}</td>))}
+              </tr>
+            </tbody>
+          </Table>
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>Birds</th>
+                  {birdNames.map(key => (<th>{key.toUpperCase()}</th>))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HW</td>
+                {birdValues.map(value => (<td>{(value ? <img className="learned_icon" src={yes} alt="yes"/> : <img className="learned_icon" src={no} alt="no"/> )}</td>))}
               </tr>
             </tbody>
           </Table>
@@ -108,14 +119,24 @@ function Mounts() {
             <tbody>
               <tr>
                 <td>ARR</td>
-                {ponyValues.map(value => (<td>{value.toString()}</td>))}
+                {ponyValues.map(value => (<td>{(value ? <img className="icon" src={yes} alt="yes"/> : <img className="icon" src={no} alt="no"/> )}</td>))}
               </tr>
             </tbody>
           </Table>
           </div>
         );
-      } else if(singlePlayerArray > 0 && player.is_active === false) {
-          return <div>Player not active</div>
+      } else {
+          return(
+            <Modal.Dialog>
+            <Modal.Header>
+              <Modal.Title>WARNING!</Modal.Title>
+            </Modal.Header>
+          
+            <Modal.Body>
+              <p>Selected Player is currently <i>NOT</i> an active player.</p>
+            </Modal.Body>
+          </Modal.Dialog>
+          )
       }
     });
 
