@@ -2,9 +2,3 @@
     height: 60px;
     width: auto;
 }
-
-.table{
-    word-wrap: normal;
-    overflow: auto;
-    text-overflow: clip;
-}
