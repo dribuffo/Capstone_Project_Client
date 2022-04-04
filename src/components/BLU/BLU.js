@@ -29,19 +29,40 @@ function BLU() {
   // toggle between group and single display
   const [display, setDisplay] = useState(null);
   // for the modals
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState([]);
   // form input state 
   const [formName, setFormName] = useState("");
+  // spell form input state 
+  const [spellName, setSpellName] = useState("");
+  
 
     // **HANDLER FUNCTIONS**
   //form handler functions
   const handleChange = ({ currentTarget: input }) => {
     setFormName({ ...formName, [input.name]: input.value });
   };
-  //modal handler functions
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
+  const handleSpellChange = ({ currentTarget: input }) => {
+    setSpellName({ ...spellName, [input.name]: input.value });
+  };
+
+
+  // **FILTER FUNCTIONS**
+  //filters the results based on what is being searched for
+  function filterSpell(spell_name){
+    axios.get(`${apiUrl}` + "/player/find").then((data) => setShow(data.data.Characters))
+    let filteredCollection = show.map(replaceSpells, {spell_name: spell_name})
+    setAllBLUs(filteredCollection)
+  }
+
+  function replaceSpells(blu_mage) {
+    const spellList = blu_mage.blu_spells 
+    const filteredList = {}
+    let keyName = this.spell_name.toString()
+    filteredList[keyName] = spellList[keyName]
+    blu_mage.blu_spells = filteredList
+    return blu_mage
+  }
 
   // ** API CALLS**
   //call to the API to get all Players
@@ -102,9 +123,9 @@ function BLU() {
         const bluNames = Object.keys(player.blu_spells);
         const bluValues = Object.values(player.blu_spells);
         return (
-            <div>
+            <div key={index}>
             <h1>{player.name}</h1>
-          <Table responsive key={index}>
+          <Table responsive>
             <thead>
               <tr>
                 <th>Spell Name:</th>
@@ -148,6 +169,7 @@ function BLU() {
       } 
     });
 
+
     // **MAIN RETURN**
   return (
     <div>
@@ -178,14 +200,14 @@ function BLU() {
           <InputGroup.Text id="btnGroupAddon">Search for a specific spell</InputGroup.Text>
           <FormControl
             type="text"
-            placeholder="player name"
+            placeholder="spell name"
             name="name"
-            aria-label="player name"
+            aria-label="spell name"
             aria-describedby="btnGroupAddon"
-            onChange={handleChange}
+            onChange={handleSpellChange}
           />
         </InputGroup>
-        <Button variant="outline-warning" onClick={() => {/*filter blu spell*/}}>
+        <Button variant="outline-warning" onClick={() => {filterSpell(spellName.name)}}>
             Search
           </Button>{" "}
         </ButtonGroup>
