@@ -27,7 +27,7 @@ The back end database will be (placeholder) based and will have a main "player" 
 |  F  |                   Project Worksheet                    | approved!  |
 |  M  |            Back End: models and start CRUD             | complete |
 |  T  | Back End: Finish CRUD and start Front End Basic Design | complete |
-|  W  |          Front End: Basic Design and display           | incomplete |
+|  W  |          Front End: Basic Design and display           | complete |
 |  R  |       Front End: Finish display and start filter       | incomplete |
 |  F  | Front End: Finish filter and start Responsiveness/CSS  | incomplete |
 |  M  |                   Finish and Deploy                    | incomplete |
@@ -60,13 +60,13 @@ The back end database will be (placeholder) based and will have a main "player" 
 
 |       Component        | Priority | Estimated Time | Actual Time |
 | :--------------------: | :------: | :------------: | :---------: |
-|    Component shell     |    H     |    .5 hour     |      ?      |
-|         Header         |    M     |    .5 hour     |      ?      |
-|         Footer         |    L     |    .5 hour     |      ?      |
-|        Routing         |    H     |    .5 hour     |      ?      |
-|  Dummy Data Creation   |    M     |    2 hours     |      ?      |
-|     Single Display     |    H     |    2 hours     |      ?      |
-|     Group Display      |    H     |    2 hours     |      ?      |
+|    Component shell     |    H     |    .5 hour     |      1 hr      |
+|         Header         |    M     |    .5 hour     |      dropped      |
+|         Footer         |    L     |    .5 hour     |      1 hr      |
+|        Routing         |    H     |    .5 hour     |      1.5 hr      |
+|  Dummy Data Creation   |    M     |    2 hours     |      1 hr      |
+|     Single Display     |    H     |    2 hours     |      4 hr      |
+|     Group Display      |    H     |    2 hours     |      2 hr      |
 |     Create Filters     |    H     |    4 hours     |      ?      |
 | Connecting to back end |    H     |    3 hours     |      ?      |
 |       Responsiveness       |    H     |    2 hours     |      ?      |
@@ -113,7 +113,7 @@ The back end database will be (placeholder) based and will have a main "player" 
 ---
   [User/Auth](https://www.youtube.com/watch?v=HGgyd1bYWsE)
   Used the above Youtube video to help implement a signup and log in page for my project.
-  
+
 <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Pixel perfect - Flaticon</a>
 
 <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created by riajulislam - Flaticon</a>
