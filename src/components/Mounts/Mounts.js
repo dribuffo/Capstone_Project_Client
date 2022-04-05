@@ -41,11 +41,6 @@ function Mounts() {
     setFormName({ ...formName, [input.name]: input.value});
   };
 
-    //handles filter input 
-  const handleSelect = (eventKey) => {
-    this.setFiltered({eventKey})
-  }
-
   // ** API CALLS**
     //call to the API to get all Players and sets display to all characters
   function getAllPlayers() {
