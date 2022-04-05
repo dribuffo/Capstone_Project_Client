@@ -42,7 +42,7 @@ function App() {
       {/* NAVBAR */}
       <Navbar expand="lg" className="color-nav">
         <Container>
-          <Navbar.Brand href="/home">Lex Talionis Guild Database</Navbar.Brand>
+          <Navbar.Brand href="/">Lex Talionis Guild Database</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -79,7 +79,7 @@ function App() {
       {/* MAIN DIV USED FOR ROUTES */}
       <main>
         <Routes>
-          <Route path="/home" element={<Home />} />,
+          <Route path="/" element={<Home />} />,
           <Route path="/mounts" element={<Mounts />} />,
           <Route path="/BLU" element={<BLU />} />,
           {user && <Route path="/update" element={<Update />} />},
@@ -99,7 +99,7 @@ function App() {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey={myCharacter}>
+            <Nav.Link href={myCharacter}>
               <img
                 className="iFoot"
                 src={characterImage}
@@ -109,7 +109,7 @@ function App() {
           </Nav.Item>
           <Nav.Item>
             {/* Github icons created by Pixel perfect - Flaticon */}
-            <Nav.Link a href={githubLink}>
+            <Nav.Link href={githubLink}>
               <img
                 className="iFoot"
                 src={github}
