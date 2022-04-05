@@ -42,7 +42,7 @@ function App() {
       {/* NAVBAR */}
       <Navbar expand="lg" className="color-nav">
         <Container>
-          <Navbar.Brand href="/">Lex Talionis Guild Database</Navbar.Brand>
+          <Navbar.Brand href="/home">Lex Talionis Guild Database</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -79,7 +79,7 @@ function App() {
       {/* MAIN DIV USED FOR ROUTES */}
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />,
+          <Route path="/home" element={<Home />} />,
           <Route path="/mounts" element={<Mounts />} />,
           <Route path="/BLU" element={<BLU />} />,
           {user && <Route path="/update" element={<Update />} />},
