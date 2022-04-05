@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Capstone_Project_Client/static/css/main.e1783149.css",
-    "main.js": "/Capstone_Project_Client/static/js/main.d20db891.js",
+    "main.js": "/Capstone_Project_Client/static/js/main.52868cd8.js",
     "static/js/787.5906fe52.chunk.js": "/Capstone_Project_Client/static/js/787.5906fe52.chunk.js",
     "static/media/ffxiv-waterfall.jpg": "/Capstone_Project_Client/static/media/ffxiv-waterfall.f42002fcb872161910ed.jpg",
     "static/media/blue_mage.png": "/Capstone_Project_Client/static/media/blue_mage.09b8019cadfafd74889c.png",
@@ -10,11 +10,11 @@
     "static/media/crest.png": "/Capstone_Project_Client/static/media/crest.9b08355427afc60900e6.png",
     "index.html": "/Capstone_Project_Client/index.html",
     "main.e1783149.css.map": "/Capstone_Project_Client/static/css/main.e1783149.css.map",
-    "main.d20db891.js.map": "/Capstone_Project_Client/static/js/main.d20db891.js.map",
+    "main.52868cd8.js.map": "/Capstone_Project_Client/static/js/main.52868cd8.js.map",
     "787.5906fe52.chunk.js.map": "/Capstone_Project_Client/static/js/787.5906fe52.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e1783149.css",
-    "static/js/main.d20db891.js"
+    "static/js/main.52868cd8.js"
   ]
 }
