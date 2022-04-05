@@ -3,6 +3,7 @@
 ---
 
 This full stack application will make use of a heroku hosted database to display my guild's collection of collectables by person.
+[Deployed Frontend](https://dribuffo.github.io/Capstone_Project_Client/)
 
 ## USER STORIES
 
@@ -28,10 +29,10 @@ The back end database will be (placeholder) based and will have a main "player" 
 |  M  |            Back End: models and start CRUD             | complete |
 |  T  | Back End: Finish CRUD and start Front End Basic Design | complete |
 |  W  |          Front End: Basic Design and display           | complete |
-|  R  |       Front End: Finish display and start filter       | incomplete |
-|  F  | Front End: Finish filter and start Responsiveness/CSS  | incomplete |
-|  M  |                   Finish and Deploy                    | incomplete |
-|  T  |                   Presentation day!                    | incomplete |
+|  R  |       Front End: Finish display and start filter       | complete |
+|  F  | Front End: Finish filter and start Responsiveness/CSS  | complete |
+|  M  |                   Finish and Deploy                    | complete |
+|  T  |                   Presentation day!                    | complete |
 
 ## WIREFRAMES
 
@@ -67,12 +68,12 @@ The back end database will be (placeholder) based and will have a main "player" 
 |  Dummy Data Creation   |    M     |    2 hours     |      1 hr      |
 |     Single Display     |    H     |    2 hours     |      4 hr      |
 |     Group Display      |    H     |    2 hours     |      2 hr      |
-|     Create Filters     |    H     |    4 hours     |      ?      |
-| Connecting to back end |    H     |    3 hours     |      ?      |
-|       Responsiveness       |    H     |    2 hours     |      ?      |
-|  Display adjustments   |    M     |    3 hours     |      ?      |
-|          CSS           |    M     |    3 hours     |      ?      |
-|         Total          |          |     23 hrs     |      ?      |
+|     Create Filters     |    H     |    4 hours     |      6 hrs      |
+| Connecting to back end |    H     |    3 hours     |      1 hr      |
+|       Responsiveness       |    H     |    2 hours     |      1 hr      |
+|  Display adjustments   |    M     |    3 hours     |      1hrs     |
+|          CSS           |    M     |    3 hours     |      2.5hrs      |
+|         Total          |          |     23 hrs     |      22 hrs      |
 
 #### POST MVP
 
@@ -93,21 +94,30 @@ The back end database will be (placeholder) based and will have a main "player" 
 |                         Total                          |          |     7 hrs      |      ?      |
 
 ## WORKING SCREENSHOT
-
 ---
+[Working screenshot](https://drive.google.com/file/d/1QT6EBPjg_JOl1b7t5R0nl1RydZlNKdid/view?usp=sharing)
 
 ## TECHNOBABBLE
-
 ---
+For the front end of my MERN app I used React, a front end framework that we have been using since unit 2 and that I'm the most comfortable and familiar with. 
 
 ## CODE SNIPPET
-
 ---
+```js
+{ponyValues.map((value) => (
+<td>
+{value ? (<img className="icon" src={yes} alt="yes" />) : (<img className="icon" src={no} alt="no" />)}
+</td>
+))}
+```
+One of the pieces I'm really proud of is actually just a simple ternary operation that outputs a green checkmark if the Player owns something and a red X mark if they don't. It looks so simple, but implementing this in the .map was a bit tricker than initially thought. I had to take all the values of the pony object nested in my player object and map through those in the return function of mapping through all the player objects.
+
 
 ## LIBRARIES & ADDITIONAL DEPENDENCIES
 ---
 
  [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction)
+ I used bootstrap to create the tables, buttons, and navbar. This really helped when it came time to make things responsive, since bootstrap does a lot of that for you. It cut down on my styling time as well. Very helpful now that I understand how it works. To install follow the documentation in the link
 
 ## CREDITED CODE BLOCKS & ATTRIBUTES
 ---
@@ -124,6 +134,8 @@ Used the above stackoverflow post to help me make a button that takes the user t
 [home page wallpaper](https://wallpapers.com/wallpapers/final-fantasy-xiv-hd-wallpaper-exae2peai92o5iwd.html)
 Used the above reddit thread to find the homepage background for my project. The above person posted it, but it was originally drawn by someone at Square-enix.
 
-## SURMOUNTABLES
+SHout out to Aidyn who helped me get my different displays working. I borrowed some of the code she wrote (with her permission) from her Project 4 project.
 
+## FUTURE SURMOUNTABLES
 ---
+I wasn't able to get my update page to make use of react bootstraps checkboxes, so instead I had to put in a simple form submission to update certain portions of my Player object. I left the code commented out as a breadcrumb to remind myself what I was doing. Using those to return data was an interesting challenge I was hoping to have worked through, as I think it looks a bit cleaner overall and is quicker to use, but I wasn't able to work those into making my PUT fetch request quite like I hoped.
