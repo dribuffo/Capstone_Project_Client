@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
+import apiUrl from "../../apiUrl";
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -17,7 +18,7 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const url = "http://localhost:4000/api/auth";
+      const url = apiUrl + "/api/auth";
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.data);
       window.location = "/";

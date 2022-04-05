@@ -112,7 +112,7 @@ function Update() {
   //Update active status, BLU status
   //active status
   function updateForm(formChange){
-    fetch("http://localhost:4000/player/update/" + formName.name, { 
+    fetch(apiUrl + "/player/update/" + formName.name, { 
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(formChange)
