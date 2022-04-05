@@ -14,6 +14,7 @@ import {
   DropdownButton,
   ButtonGroup,
   Table,
+  Form,
 } from "react-bootstrap";
 
 //image imports to use instead of true and false
@@ -23,39 +24,81 @@ import no from "../images/Close.png"
 
 function Update() {
 //USE STATES
-  //data for the updates
-  const [data, setData] = useState({});
-  //form
+  //for the spell updates
+  const [spell, setSpell] = useState({
+      name: "",
+      check: true
+  });
+  //for the pony updates
+  const [pony, setPony] = useState({
+    name: "",
+    check: true
+  });
+  //for the bird updates
+  const [bird, setBird] = useState({
+        name: "",
+        check: true
+  });
+  // name form
   const [formName, setFormName] = useState("");
-  //player
-  const [singlePlayer, setSinglePlayer] = useState([]);
-  //display
+  //player update
+  const [singlePlayer, setSinglePlayer] = useState({
+      name: "",
+      pony: {},
+      bird: {},
+      blu_spells: {}
+  });
+  //table display
   const [info, setInfo] = useState("");
-  //active status
-  const [active, setActive] = useState({is_active: Boolean});
-  //blu status
-  const [bluStatus, setBluStatus] = useState({has_BLU: Boolean});
-  //the check boxes
-  const [checked, setChecked] = useState(false);
+  //form change for status update
+  const [formChange, setFormChange] = useState({
+        is_active: "false",
+        has_BLU: "false",
+        pony: {
+            aithon: false,
+            boreas: false,
+            enbarr: false,
+            gullfaxi: false,
+            markab: false,
+            xanthos: false,
+            nightmare: false,
+            kirin: false,
+        },
+  })
 
 //HANDLER FUNCTIONS
-  //handle functions for checkbox
-  const handleChecked = () => {
-    setChecked(!checked);
-  };
   //handle function for search form
   const handleChange = ({ currentTarget: input }) => {
     setFormName({ ...formName, [input.name]: input.value });
   };
-  //handle function for active status radio button
-  const handleRadioChange = (e) => {
-      setActive({is_active: e.target.value});
-  }
 
-  const handleRadioTwoChange = (e) => {
-    setBluStatus({has_BLU: e.target.value});
-  }
+  //handle function for spell form
+  const handleBluChange = ({ currentTarget: input }) => {
+    setSpell({ ...spell, [input.name]: input.value });
+  };
 
+  //handle function for pony form
+  const handlePonyChange = ({ currentTarget: input }) => {
+    setPony({ ...pony, [input.name]: input.value });
+  };
+
+  //handle function for bird form
+  const handleBirdChange = ({ currentTarget: input }) => {
+    setBird({ ...bird, [input.name]: input.value });
+  };
+
+  // handle function for update status radio buttons
+  function handleFormChange(event) {
+      event.preventDefault()
+    const {name, value, type, checked} = event.target
+    setFormChange(prevFormData => {
+        return {
+            ...prevFormData,
+            [name]: type === "checkbox" ? checked : value
+        }
+    })
+}
+ 
 //API CALLS
   //API call to get information
   function getPlayer(formName) {
@@ -66,36 +109,48 @@ function Update() {
   }
 
 //UPDATE -- API CALLS
-  //Update name, active status, BLU status
+  //Update active status, BLU status
   //active status
-  function updateStatus(formName) {
-    fetch("http://localhost:4000/player/update/" + formName, { 
+  function updateForm(formChange){
+    fetch("http://localhost:4000/player/update/" + formName.name, { 
         method: "PUT",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(active)
+        body: JSON.stringify(formChange)
     })
-      .catch((error) => console.log(error));
-  }
-  //BLU status
-  function updateBLU(formName) {
-    fetch("http://localhost:4000/player/update/" + formName, { 
-        method: "PUT",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(bluStatus)
-    })
-      .catch((error) => console.log(error));
-  }
-  //update pony
-  //update bird
-  function updateBird() {
-    fetch(`${apiUrl}` + "/player/update/" + formName + "/bird/" + "test", { //replace test with state value
-        method: "PUT",
-        headers: {"Content-Type": "application/json"},
-        body: " " //placeholder for the actual code
-    })
-      .catch((error) => console.log(error));
+        .catch((error) => console.log(error));
   }
   //update BLU spells
+  function learnSpell(spell) {
+      let azure = {}
+      azure[spell.name] = spell.check
+    fetch(apiUrl + "/player/update/" + formName.name + "/BLU/" + spell.name, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(azure)
+    })
+    }
+
+//update pony list when pony is acquired
+  function acquirePony(pony) {
+    let stable = {}
+    stable[pony.name] = pony.check
+  fetch(apiUrl + "/player/update/" + formName.name + "/pony/" + pony.name, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(stable)
+  })
+  }
+
+  //update bird list when bird is acquired
+  function acquireBird(bird) {
+    let aviary = {}
+    aviary[bird.name] = bird.check
+  fetch(apiUrl + "/player/update/" + formName.name + "/bird/" + bird.name, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(aviary)
+  })
+  }
 
 
   //MAPPING FUNCTION
@@ -103,7 +158,7 @@ function Update() {
   let singlePlayerDisplay;
   let singlePlayerArray = [singlePlayer]
     singlePlayerDisplay = singlePlayerArray.map((player, index) => {
-        if(singlePlayer != false) {
+        if(player != null) {
         const ponyNames = Object.keys(player.pony);
         const ponyValues = Object.values(player.pony);
         const birdNames = Object.keys(player.bird);
@@ -186,9 +241,10 @@ function Update() {
       }
     });
 
+// MAIN RETURN
 return (
-    <div>
-      <h1>Update</h1>
+    <div className="update_page">
+      <h1>Welcome to the Update Page!</h1>
       <div className="div_for_toolbar">
       <h2 className="toolbar_header">Step 1: Please search for character information:</h2>
         <ButtonToolbar>
@@ -205,10 +261,13 @@ return (
               onChange={handleChange}
             />
           </InputGroup>
-          <Button variant="info" onClick={() => getPlayer(formName.name)}>
-            Submit
+          <Button variant="info" type="button" onClick={() => getPlayer(formName.name)}>
+            Find that player!
           </Button>{" "}
         </ButtonToolbar>
+        <Form.Text id="passwordHelpBlock" muted>
+                Warning: Player names are case sensitive with _ used instead of spaces.
+        </Form.Text>
       </div>
       <div className="div_for_dropdown">
       <h2 className="data_display_dropdown">Step 2: Please choose what data to update:</h2>
@@ -234,6 +293,7 @@ return (
       </div>
 
     {/* update bars */}
+    <form onSubmit={() => updateForm(formChange)}>
     <div className="div_for_updaters">
         <h2>Step 3: Update information below:</h2>
       {/* updates Character status */}      
@@ -242,83 +302,117 @@ return (
       <h3 className="demo_heading">Player's Status Updates:</h3>
       {/* Are they active or inactive? */}
       <h4>Are they Active?</h4>
-      <input type="radio" value="true" id="true" onChange={handleRadioChange} name="active_status"/>
+      <input type="radio" value="true" id="active" onChange={handleFormChange} name="is_active" checked={formChange.is_active === "true"}/>
         <label for="true">Active</label>
-      <input type="radio" value="false" id="false" onChange={handleRadioChange} name="active_status"/>
+      <input type="radio" value="false" id="inactive" onChange={handleFormChange} name="is_active" checked={formChange.is_active === "false"}/>
         <label for="false">Inactive</label>
-        <Button variant="info" onClick={() => updateStatus(formName.name)}>
-            Submit
-          </Button>{" "}
         </div>
         {/* Did they become a Blue Mage? */}
         <h4>Are they a Blue Mage?</h4>
-        <input type="radio" value="true" id="true" onChange={handleRadioTwoChange} name="blu_status"/>
+        <input type="radio" value="true" id="yes" onChange={handleFormChange} name="has_BLU"/>
         <label for="true">Yes</label>
-      <input type="radio" value="false" id="false" onChange={handleRadioTwoChange} name="blu_status"/>
+      <input type="radio" value="false" id="no" onChange={handleFormChange} name="has_BLU"/>
         <label for="false">No</label>
-        <Button variant="info" onClick={() => updateBLU(formName.name)}>
-            Submit
-          </Button>{" "}
       </div>
 
-      {/* displays all the pony related check boxes */}
-      <div className="pony_choice">
-      <h3 className="pony_heading">What Ponys does the player have?</h3>
-        <Checkbox label="Aithon" value={checked} onChange={handleChecked} />
-        <Checkbox label="Boreas" value={checked} onChange={handleChecked} />
-        <Checkbox label="Enbarr" value={checked} onChange={handleChecked} />
-        <Checkbox label="Gullfaxi" value={checked} onChange={handleChecked} />
-        <Checkbox label="Markab" value={checked} onChange={handleChecked} />
-        <Checkbox label="Xanthos" value={checked} onChange={handleChecked} />
-        <Checkbox label="Nightmare" value={checked} onChange={handleChecked} />
-        <Checkbox label="Kirin" value={checked} onChange={handleChecked} />
-      </div>
-      
-      {/* displays all the pony related check boxes */}      
-      <div className="bird_choice">
-      <h3 className="bird_heading">What Birds does the player have?</h3>
-        <Checkbox label="Rose Lanner" value={checked} onChange={handleChecked} />
-        <Checkbox label="White Lanner" value={checked} onChange={handleChecked} />
-        <Checkbox label="Dark Lanner" value={checked} onChange={handleChecked} />
-        <Checkbox label="Round Lanner" value={checked} onChange={handleChecked} />
-        <Checkbox label="Warring Lanner" value={checked} onChange={handleChecked} />
-        <Checkbox label="Sophic Lanner" value={checked} onChange={handleChecked} />
-        <Checkbox label="Demonic Lanner" value={checked} onChange={handleChecked} />
-        <Checkbox label="Firebird" value={checked} onChange={handleChecked} />
-      </div>
+      {/* POST MVP: displays all the pony related check boxes */}
+      {/* <div className="pony_choice">
+      {/* <h3 className="pony_heading">What Ponys does the player have?</h3> 
+            <label>
+            <input type="checkbox" id="pony.aithon" name="pony.aithon" checked={formChange.pony.aithon.value} onChange={handleFormChange} />
+            Aithon
+            </label>
+            <label>
+            <input type="checkbox" id="boreas" name="boreas" checked={formChange.pony.boreas.value} onChange={handleFormChange} />
+            Boreas
+            </label>
+            <label>
+            <input type="checkbox" id="enbarr" name="enbarr" checked={formChange.pony.enbarr.value} onChange={handleFormChange} />
+            Enbarr
+            </label>
+            {/* <label>
+            <input type="checkbox" name="gullfaxi" checked={formChange.pony.gullfaxi} onChange={handleFormChange} />
+            Gullfaxi
+            </label>
+            <label>
+            <input type="checkbox" name="markab" checked={formChange.pony.markab} onChange={handleFormChange} />
+            Markab
+            </label>
+            <label>
+            <input type="checkbox" name="xanthos" checked={formChange.pony.xanthos} onChange={handleFormChange} />
+            Xanthos
+            </label>
+            <label>
+            <input type="checkbox" name="nightmare" checked={formChange.pony.nightmare} onChange={handleFormChange} />
+            Nightmare
+            </label>
+            <label>
+            <input type="checkbox" name="kirin" checked={formChange.pony.kirin} onChange={handleFormChange} />
+            Kirin
+            </label> 
+        </div> */} 
     </div>
-
+    <Button variant="info" type="submit" > 
+            Submit all changes
+        </Button>{" "}
+    </form>
+    <div className="pony_choice">
+        <h3 className="pony_heading">What pony did you acquire?</h3>
+        <Form.Label>Pony won:</Form.Label>
+            <FormControl
+              type="text"
+              placeholder="pony name"
+              name="name"
+              aria-label="player name"
+              aria-describedby="btnGroupAddon"
+              onChange={handlePonyChange}
+            />
+            <Button variant="info" onClick={() => acquirePony(pony)} > 
+            Stable that pony!
+            </Button>{" "}
+            <Form.Text id="passwordHelpBlock" muted>
+                Warning: Pony names must be entered in all lowercase.
+            </Form.Text>
+    </div>
+    <div className="bird_choice">
+        <h3 className="bird_heading">What bird did you acquire?</h3>
+        <Form.Label>bird won:</Form.Label>
+            <FormControl
+              type="text"
+              placeholder="bird name"
+              name="name"
+              aria-label="player name"
+              aria-describedby="btnGroupAddon"
+              onChange={handleBirdChange}
+            />
+            <Button variant="info" onClick={() => acquireBird(bird)} > 
+            Roost that bird!
+            </Button>{" "}
+            <Form.Text id="passwordHelpBlock" muted>
+                Warning: Bird names must be entered in all lowercase, with _ used instead of spaces.
+            </Form.Text>
+    </div>
     <div className="blu_choice">
-        <h3 className="blu_heading">What spells do they know?</h3>
-        <InputGroup>
-            <InputGroup.Text id="btnGroupAddon">
-              Newly learned spell
-            </InputGroup.Text>
+        <h3 className="blu_heading">What spell did the player learn?</h3>
+        <Form.Label>Newly Learned Spell:</Form.Label>
             <FormControl
               type="text"
               placeholder="spell name"
               name="name"
               aria-label="player name"
               aria-describedby="btnGroupAddon"
-              onChange={handleChange}
+              onChange={handleBluChange}
             />
-          </InputGroup>
+            <Button variant="info" onClick={() => learnSpell(spell)} > 
+            Learn that spell!
+            </Button>{" "}
+            <Form.Text id="passwordHelpBlock" muted>
+                Warning: Spell names must be entered in all lowercase, with _ used instead of spaces.
+            </Form.Text>
     </div>
-
-
-
+    
+    {/* MAIN DIV CLOSING TAG */}
     </div>
   );
   }
 export default Update;
-
-
-//checkbox component
-const Checkbox = ({ label, value, onChange }) => {
-  return (
-    <label>
-      <input type="checkbox" checked={value} onChange={onChange} />
-      {label}
-    </label>
-  );
-}

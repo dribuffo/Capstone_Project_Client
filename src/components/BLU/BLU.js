@@ -8,6 +8,7 @@ import "./BLU.css";
 //image imports to use instead of true and false:
 import yes from "../images/Check.png"
 import no from "../images/Close.png"
+import blu_sprite from "../images/blue_mage.png"
 
 //react bootstrap imports
 import {
@@ -150,6 +151,7 @@ function BLU() {
               
                 <Modal.Body>
                   <p>Selected Player is <i>NOT</i> a Blue Mage.</p>
+                  <img src={blu_sprite} alt="a blue mage" className="blu_sprite"/>
                 </Modal.Body>
               </Modal.Dialog>
               )
@@ -173,7 +175,7 @@ function BLU() {
     // **MAIN RETURN**
   return (
     <div>
-        <h1>BLU TEST PAGE</h1>
+        <h1>Blue Magic Grimoire</h1>
       <ButtonToolbar className="mb-3" aria-label="selecting display elements">
         <ButtonGroup className="me-2" aria-label="player selector">
           <Button variant="info" onClick={getAllBLUs}>
@@ -207,7 +209,7 @@ function BLU() {
             onChange={handleSpellChange}
           />
         </InputGroup>
-        <Button variant="outline-warning" onClick={() => {filterSpell(spellName.name)}}>
+        <Button variant="warning" onClick={() => {filterSpell(spellName.name)}}>
             Search
           </Button>{" "}
         </ButtonGroup>

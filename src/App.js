@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App">
       {/* NAVBAR */}
-      <Navbar bg="light" expand="lg">
+      <Navbar expand="lg" className="color-nav">
         <Container>
           <Navbar.Brand href="/">Lex Talionis Guild Database</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

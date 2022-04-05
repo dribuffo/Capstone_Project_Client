@@ -62,14 +62,6 @@ const Signup = () => {
             </button>
           </form>
         </div>
-        <div className="right">
-          <h1>Create new user?</h1>
-          <Link to="/Signup">
-            <button type="button" className="green_btn">
-              Sign Up
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );
