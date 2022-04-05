@@ -13,6 +13,7 @@ import Mounts from "./components/Mounts/Mounts";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Singup";
 import Update from './components/Update/Update';
+import Add from "./components/Add/Add"
 
 //footer links and imports
 import guildCrest from "./components/images/crest.png"
@@ -23,8 +24,6 @@ let guildSite = 'https://na.finalfantasyxiv.com/lodestone/freecompany/9236179148
 let githubLink = 'https://github.com/dribuffo'
 let linkedinLink = 'https://www.linkedin.com/in/danielribuffo/'
 let myCharacter = 'https://na.finalfantasyxiv.com/lodestone/character/210852/'
-
-
 
 function App() {
   // **USE STATES**
@@ -57,13 +56,16 @@ function App() {
                 <NavDropdown.Item as={Link} to={"/update"}>
                   Update Character
                 </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to={"/Signup"}>
-                  Sign Up
-                </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to={"/Login"}>
                   Log In
                 </NavDropdown.Item>
+                {user ? (<NavDropdown.Divider />) : null}
+                {user ? (<NavDropdown.Item as={Link} to={"/add"}>
+                  Add new Player
+                </NavDropdown.Item>) : null}
+                {user ? (<NavDropdown.Item as={Link} to={"/Signup"}>
+                  Sign Up
+                </NavDropdown.Item>) : null}
                 {user ? (
                   <button className="white_btn" onClick={handleLogout}>
                     Logout
@@ -81,6 +83,7 @@ function App() {
           <Route path="/mounts" element={<Mounts />} />,
           <Route path="/BLU" element={<BLU />} />,
           {user && <Route path="/update" element={<Update />} />},
+          {user && <Route path="/add" element={<Add />} />},
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
         </Routes>
