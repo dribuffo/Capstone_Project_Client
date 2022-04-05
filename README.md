@@ -118,6 +118,12 @@ The back end database will be (placeholder) based and will have a main "player" 
 
 <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created by riajulislam - Flaticon</a>
 
+[Button to change page](https://stackoverflow.com/questions/50644976/react-button-onclick-redirect-page)
+Used the above stackoverflow post to help me make a button that takes the user to the update page from the add a new player page.
+
+[home page wallpaper](https://wallpapers.com/wallpapers/final-fantasy-xiv-hd-wallpaper-exae2peai92o5iwd.html)
+Used the above reddit thread to find the homepage background for my project. The above person posted it, but it was originally drawn by someone at Square-enix.
+
 ## SURMOUNTABLES
 
 ---
